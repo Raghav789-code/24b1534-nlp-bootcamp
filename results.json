@@ -1,0 +1,59 @@
+{
+  "name": "",
+  "roll_no": "24b1534",
+  "seed": 42,
+  "gpu_used": "NVIDIA GeForce RTX 4050 Laptop GPU (6 GB), shared with another training job during Tasks 2-3 timings",
+  "task1": {
+    "bm25_settings": "own sparse BM25 (Lucene idf), k1=0.9, b=0.5, title+abstract, lowercase regex tokens, stopwords=removed, Snowball stemming; grid-searched on val nDCG@10",
+    "val_ndcg10": 0.8546
+  },
+  "task2": {
+    "general_model": "BAAI/bge-base-en-v1.5 (109M, query instruction prefix, max 512 tokens)",
+    "scientific_model": "ncbi/MedCPT-Query-Encoder + ncbi/MedCPT-Article-Encoder (110M each, PubMed-trained, CLS + inner product)",
+    "val_ndcg10_general": 0.891,
+    "val_ndcg10_scientific": 0.8509,
+    "index_time_sec": {
+      "general": 46.19,
+      "scientific": 57.86
+    },
+    "query_latency_ms": {
+      "general": 48.19,
+      "scientific": 35.1
+    },
+    "memory_mb": {
+      "general": 224.0,
+      "scientific": 432.8
+    }
+  },
+  "task3": {
+    "hybrid_method": "weighted reciprocal rank fusion over the full corpus: score = 0.2/(60+rank_BM25) + 0.4/(60+rank_BGE) + 0.4/(60+rank_MedCPT); weights grid-searched on train claims, RRF chosen over z-score / min-max score interpolation on val",
+    "reranker_model": "ncbi/MedCPT-Cross-Encoder (cross-encoder over claim + title/abstract, max 512 tokens), first stage = hybrid",
+    "rerank_top_k": 20,
+    "val_ndcg10_hybrid": 0.9139,
+    "val_ndcg10_rerank": 0.9281,
+    "rerank_query_latency_ms": 429.9
+  },
+  "task4": {
+    "base_model": "BAAI/bge-base-en-v1.5 fine-tuned with MultipleNegativesRankingLoss (in-batch + 1 explicit negative), lr=1e-05, batch=16, max_len=256, up to 2 epochs, best epoch by val nDCG@10",
+    "val_ndcg10_random_negatives": 0.8865,
+    "val_ndcg10_hard_negatives": 0.8916,
+    "random_best_epoch": 1,
+    "hard_best_epoch": 1
+  },
+  "task5": {
+    "retriever_used": "t3_rerank (best val nDCG@10 = 0.9281); top-2 abstracts",
+    "nli_model": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli (184M), sentence-level + whole-abstract NLI, aggregated by a 3-way logistic regression trained on train claims",
+    "zero_shot_or_finetuned": "zero-shot NLI model; decision layer (logistic regression + margin) trained/tuned on the train claims only",
+    "val_f1": 0.5388
+  },
+  "report_q1": {
+    "bm25_wins": [
+      673,
+      381
+    ],
+    "general_wins": [
+      766,
+      1311
+    ]
+  }
+}

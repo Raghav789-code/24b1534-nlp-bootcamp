@@ -1,0 +1,10 @@
+numpy
+scipy
+scikit-learn
+torch
+transformers>=4.40
+sentence-transformers>=3.0
+PyStemmer
+tqdm
+sentencepiece
+protobuf
