@@ -11,12 +11,15 @@ TOP_K = 100
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)                      # submission/
-# data/ inside the repo (git clone), else data/ next to the submission folder (bootcamp layout)
+# extras/data/ in the GitHub repo, else data/ next to the submission folder (bootcamp layout)
 DATA_DIR = os.environ.get("DATA_DIR") or next(
-    (p for p in (os.path.join(ROOT, "data"), os.path.join(os.path.dirname(ROOT), "data")) if os.path.isdir(p)),
+    (p for p in (os.path.join(ROOT, "extras", "data"), os.path.join(ROOT, "data"),
+                 os.path.join(os.path.dirname(ROOT), "data")) if os.path.isdir(p)),
     os.path.join(ROOT, "data"))
 PRED_DIR = os.path.join(ROOT, "predictions")
-CACHE_DIR = os.path.join(ROOT, "cache")           # not shipped in the zip
+# not shipped in the zip; kept under extras/ in the GitHub repo
+CACHE_DIR = (os.path.join(ROOT, "extras", "cache") if os.path.isdir(os.path.join(ROOT, "extras"))
+             else os.path.join(ROOT, "cache"))
 os.makedirs(PRED_DIR, exist_ok=True)
 os.makedirs(CACHE_DIR, exist_ok=True)
 
