@@ -1,0 +1,20 @@
+{
+  "retriever": "t3_rerank",
+  "margin": 0.5,
+  "n_docs": 2,
+  "train_oof_f1": 0.5769230769230769,
+  "val_p": 0.6210526315789474,
+  "val_r": 0.47580645161290325,
+  "val_f1": 0.5388127853881279,
+  "n_errors": 73,
+  "categories": {
+    "other": 18,
+    "numerical": 23,
+    "entity_mismatch": 10,
+    "negation": 6,
+    "needs_multiple_docs": 3,
+    "retrieval_miss": 13
+  },
+  "n_val_pred": 95,
+  "n_eval_pred": 165
+}

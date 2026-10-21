@@ -1,0 +1,27 @@
+﻿hybrid zscore w(bm25,gen,sci)=(0.1, 0.5, 0.4): train nDCG=0.9300  val={'ndcg10': 0.9006696983684761, 'recall100': 1.0, 'mrr': 0.879245283018868}
+hybrid minmax w(bm25,gen,sci)=(0.1, 0.7, 0.2): train nDCG=0.9340  val={'ndcg10': 0.9050586490460906, 'recall100': 1.0, 'mrr': 0.8883218982275586}
+hybrid rrf w(bm25,gen,sci)=(0.2, 0.4, 0.4): train nDCG=0.9224  val={'ndcg10': 0.9138921162383964, 'recall100': 1.0, 'mrr': 0.8964285714285715}
+[val] t3_hybrid: ndcg10=0.9139, recall100=1.0000, mrr=0.8964
+first stage for reranking: hybrid
+scored val top-100 with BAAI/bge-reranker-base
+rerank BAAI/bge-reranker-base k=5: {'ndcg10': 0.9002375326363877, 'recall100': 1.0, 'mrr': 0.8736298292902066}
+rerank BAAI/bge-reranker-base k=10: {'ndcg10': 0.8875355703993798, 'recall100': 1.0, 'mrr': 0.8592392932015573}
+rerank BAAI/bge-reranker-base k=20: {'ndcg10': 0.8749877357821008, 'recall100': 1.0, 'mrr': 0.851321843774674}
+rerank BAAI/bge-reranker-base k=30: {'ndcg10': 0.8680405432237577, 'recall100': 1.0, 'mrr': 0.8496421724779106}
+rerank BAAI/bge-reranker-base k=50: {'ndcg10': 0.8652895435535463, 'recall100': 1.0, 'mrr': 0.8471890399956438}
+rerank BAAI/bge-reranker-base k=100: {'ndcg10': 0.8579853125234198, 'recall100': 1.0, 'mrr': 0.8443823038129583}
+scored val top-100 with cross-encoder/ms-marco-MiniLM-L-12-v2
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=5: {'ndcg10': 0.9024478144062437, 'recall100': 1.0, 'mrr': 0.8825920934411501}
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=10: {'ndcg10': 0.8926252260261325, 'recall100': 1.0, 'mrr': 0.8706386642707397}
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=20: {'ndcg10': 0.8760690166246613, 'recall100': 1.0, 'mrr': 0.8602373124778785}
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=30: {'ndcg10': 0.8690291361472959, 'recall100': 1.0, 'mrr': 0.8541586034510563}
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=50: {'ndcg10': 0.8634394098245891, 'recall100': 1.0, 'mrr': 0.8532056753519017}
+rerank cross-encoder/ms-marco-MiniLM-L-12-v2 k=100: {'ndcg10': 0.8627368685890667, 'recall100': 1.0, 'mrr': 0.8517828023589604}
+scored val top-100 with ncbi/MedCPT-Cross-Encoder
+rerank ncbi/MedCPT-Cross-Encoder k=5: {'ndcg10': 0.9228715617088026, 'recall100': 1.0, 'mrr': 0.9071203953279424}
+rerank ncbi/MedCPT-Cross-Encoder k=10: {'ndcg10': 0.9214773071814975, 'recall100': 1.0, 'mrr': 0.9047619047619047}
+rerank ncbi/MedCPT-Cross-Encoder k=20: {'ndcg10': 0.9281009613937669, 'recall100': 1.0, 'mrr': 0.9072327044025157}
+rerank ncbi/MedCPT-Cross-Encoder k=30: {'ndcg10': 0.9281009613937669, 'recall100': 1.0, 'mrr': 0.9072327044025157}
+rerank ncbi/MedCPT-Cross-Encoder k=50: {'ndcg10': 0.9281009613937669, 'recall100': 1.0, 'mrr': 0.9072327044025157}
+rerank ncbi/MedCPT-Cross-Encoder k=100: {'ndcg10': 0.9281009613937669, 'recall100': 1.0, 'mrr': 0.9072327044025157}
+[val] t3_rerank: ndcg10=0.9281, recall100=1.0000, mrr=0.9072

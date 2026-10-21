@@ -11,7 +11,10 @@ TOP_K = 100
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)                      # submission/
-DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(ROOT), "data"))
+# data/ inside the repo (git clone), else data/ next to the submission folder (bootcamp layout)
+DATA_DIR = os.environ.get("DATA_DIR") or next(
+    (p for p in (os.path.join(ROOT, "data"), os.path.join(os.path.dirname(ROOT), "data")) if os.path.isdir(p)),
+    os.path.join(ROOT, "data"))
 PRED_DIR = os.path.join(ROOT, "predictions")
 CACHE_DIR = os.path.join(ROOT, "cache")           # not shipped in the zip
 os.makedirs(PRED_DIR, exist_ok=True)

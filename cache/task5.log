@@ -1,0 +1,4 @@
+﻿best retriever by val nDCG@10: t3_rerank (0.9281)
+train OOF F1=0.5769 margin=0.5 n_docs=2
+val verification P=0.6211 R=0.4758 F1=0.5388
+73 / 162 val claims wrong; categories: {'other': 18, 'numerical': 23, 'entity_mismatch': 10, 'negation': 6, 'needs_multiple_docs': 3, 'retrieval_miss': 13}

@@ -1,0 +1,7 @@
+random: 440 training triples from 399 claims
+epoch 0: train nDCG=0.9088  val {'ndcg10': 0.8910028852798842, 'recall100': 1.0, 'mrr': 0.8788044148477}
+{'train_runtime': '515.1', 'train_samples_per_second': '0.854', 'train_steps_per_second': '0.054', 'train_loss': '0.1848', 'epoch': '1'}
+epoch 1: train nDCG=0.9236  val {'ndcg10': 0.8758714351853956, 'recall100': 0.9905660377358491, 'mrr': 0.8598001489572988}
+{'train_runtime': '16.49', 'train_samples_per_second': '26.68', 'train_steps_per_second': '1.698', 'train_loss': '0.07802', 'epoch': '1'}
+epoch 2: train nDCG=0.9289  val {'ndcg10': 0.8650940267159236, 'recall100': 0.9905660377358491, 'mrr': 0.8407934636118598}
+{'train_runtime': '15.66', 'train_samples_per_second': '28.1', 'train_steps_per_second': '1.788', 'train_loss': '0.06248', 'epoch': '1'}

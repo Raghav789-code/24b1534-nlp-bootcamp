@@ -1,0 +1,1 @@
+{"first_stage": "hybrid", "fusion_ms_per_query": 5.316135795187369, "reranker": "ncbi/MedCPT-Cross-Encoder", "k": 20, "rerank_ms": 429.85021670659387}

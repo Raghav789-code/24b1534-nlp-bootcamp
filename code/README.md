@@ -1,8 +1,8 @@
 # SciFact evidence retrieval + claim verification — reproduction
 
-All scripts live in `code/` and are run **from inside `code/`**. They expect the provided data in
-`../../data/` (i.e. the `data/` folder next to `check_format.py`); override with the `DATA_DIR`
-environment variable. Global seed = 42 (`common.SEED`). Hardware used: 1x RTX 4050 Laptop (6 GB),
+All scripts live in `code/` and are run **from inside `code/`**. They read the provided data from
+`../data/` (the GitHub repo includes it), or else `../../data/` (the bootcamp layout, where `data/` sits
+next to `check_format.py`). The `DATA_DIR` environment variable overrides both. Global seed = 42 (`common.SEED`). Hardware used: 1x RTX 4050 Laptop (6 GB),
 Python 3.13, torch 2.13 + CUDA. Intermediate score matrices / runs go to `../cache/` (not shipped).
 
 ```bash
@@ -22,7 +22,8 @@ into `../results.json` and `val_metrics.json`):
 | Q1 analysis | `python report_analysis.py` | fills `report_q1` in `results.json`, prints the ablation | seconds |
 | Report draft | `python make_report.py` | `../report.md` filled from the measured numbers | seconds |
 
-Then validate: `python ../../check_format.py ..`
+Then validate: `python ../check_format.py ..` in the GitHub repo, or `python ../../check_format.py ..` in the
+bootcamp layout.
 
 The submitted `report.md` starts from the `make_report.py` draft, with Q1's explanations written by hand from
 `report_analysis.py`'s output. `colab_pipeline.ipynb` holds the same code in one notebook: upload the data zip, then
